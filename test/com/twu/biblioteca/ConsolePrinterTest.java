@@ -8,9 +8,6 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by ben on 16-6-12.
- */
 public class ConsolePrinterTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -20,7 +17,7 @@ public class ConsolePrinterTest {
     }
 
     @Test
-    public void shouldPrintContentToOutputStreamWhenIWantToPrintIt() {
+    public void should_print_content_to_output_stream_when_want_to_print_it() {
         ConsolePrinter printer = new ConsolePrinter();
 
         printer.print("print me to console");
@@ -28,11 +25,8 @@ public class ConsolePrinterTest {
         assertEquals(outContent.toString(), "print me to console");
     }
 
-
-
-
     @Test
-    public void shouldCanPrintSpecialCharacter() {
+    public void should_can_print_special_character() {
         ConsolePrinter printer = new ConsolePrinter();
 
         printer.print("@#$%^&*\n");

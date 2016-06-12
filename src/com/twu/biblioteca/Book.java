@@ -2,9 +2,6 @@ package com.twu.biblioteca;
 
 import java.util.Date;
 
-/**
- * Created by ben on 16-6-12.
- */
 public class Book {
     private String isbn;
     private String name;

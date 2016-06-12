@@ -5,20 +5,133 @@ import com.twu.biblioteca.Option.Option;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by ben on 16-6-12.
- */
 public class Biblioteca {
-    private BookList bookList;
+    private List<BookRecord> bookRecords;
     private Scanner scanner=new Scanner(System.in);
     private ConsolePrinter consolePrinter;
-    private List<Option> options;
+    private List<Option> menu;
+    private boolean stopSign;
 
-    public Biblioteca(ConsolePrinter consolePrinter, List<Option> options, BookList bookList) {
+    public Biblioteca(ConsolePrinter consolePrinter, List<Option> menu, List<BookRecord> bookRecords) {
         this.consolePrinter=consolePrinter;
-        this.options = options;
-        this.bookList = bookList;
+        this.menu = menu;
+        this.bookRecords = bookRecords;
+        stopSign=false;
     }
+
+    public void start(){
+        showWelcomeWords();
+        listBooks();
+        listMenu();
+
+        while (!stopSign){
+            getUserMenuInput(scanner.nextLine());
+        }
+    }
+
+    public boolean validateMenuId(int menuId){
+        for(Option option :menu){
+            if(option.getId()==menuId){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void getUserMenuInput(String userInput) {
+        if (!validateMenuId(Integer.parseInt(userInput))){
+            showInvalidMessage();
+            return;
+        }
+        for(Option option :menu){
+            if(option.getId()==Integer.parseInt(userInput)){
+                option.run(this);
+                listMenu();
+            }
+        }
+    }
+
+    public void listTitle(){
+        consolePrinter.print("isbn\tname\tauthor\tyear");
+    }
+
+
+    public void listBooks(){
+        listTitle();
+        for (BookRecord bookRecord:bookRecords) {
+            consolePrinter.print(bookRecord.getBook().showBook());
+        }
+    }
+
+    public void listMenu(){
+        consolePrinter.print("Please select a menu id.");
+        for(Option option :menu){
+            consolePrinter.print(option.getOptionString());
+        }
+    }
+
+    public void quit(){
+        stopSign=true;
+        showQuitWords();
+    }
+
+
+    public boolean validateIsbnInput(String userInput){
+        for (BookRecord bookRecord:bookRecords) {
+            if(bookRecord.getBook().getIsbn()==userInput){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getUserIsbnInput(){
+        consolePrinter.print("Please input isbn.");
+        String userInput=scanner.nextLine();
+        return userInput;
+    }
+
+
+    public void returnBook(){
+        String userInput= getUserIsbnInput();
+        if(!validateIsbnInput(userInput)){
+            showInvalidMessage();
+            return;
+        }
+
+
+        for (BookRecord bookRecord:bookRecords) {
+            if(bookRecord.getBook().getIsbn()==userInput&&bookRecord.isCheckoutStatus()){
+                bookRecord.setCheckoutStatus(false);
+                showSuccessfulReturn();
+            }
+            else
+            {
+                showUnsuccessfulReturn();
+            }
+        }
+    }
+
+    public void checkoutBook(){
+        String userInput= getUserIsbnInput();
+        if(!validateIsbnInput(userInput)){
+            showInvalidMessage();
+            return;
+        }
+
+        for (BookRecord bookRecord:bookRecords) {
+            if(bookRecord.getBook().getIsbn()==userInput&&!bookRecord.isCheckoutStatus()){
+                bookRecord.setCheckoutStatus(true);
+                showSuccessfulCheckout();
+            }
+            else
+            {
+                showUnsuccessfulCheckout();
+            }
+        }
+    }
+
+
 
     public void showWelcomeWords(){
         consolePrinter.print("welcome to biblioteca");
@@ -45,4 +158,12 @@ public class Biblioteca {
         consolePrinter.print("That is not a valid book to return");
     }
 
+    public void showInvalidMessage(){
+        consolePrinter.print("Select a valid option!");
+    }
+
+
+    public boolean isStopSign() {
+        return stopSign;
+    }
 }

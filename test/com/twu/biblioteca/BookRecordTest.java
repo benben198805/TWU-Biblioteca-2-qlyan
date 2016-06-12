@@ -16,13 +16,13 @@ public class BookRecordTest {
     }
 
     @Test
-    public void checkoutBook() throws Exception {
+    public void should_return_true_when_call_checkoutBook() throws Exception {
         bookRecord.checkoutBook();
         assertEquals(bookRecord.isCheckoutStatus(),true);
     }
 
     @Test
-    public void returnBook() throws Exception {
+    public void should_return_false_when_call_checkoutBook_then_returnBook() throws Exception {
         bookRecord.checkoutBook();
         bookRecord.returnBook();
         assertEquals(bookRecord.isCheckoutStatus(),false);

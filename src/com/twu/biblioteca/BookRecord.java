@@ -1,8 +1,5 @@
 package com.twu.biblioteca;
 
-/**
- * Created by ben on 16-6-12.
- */
 public class BookRecord {
     private Book book;
     private boolean checkoutStatus;
@@ -21,7 +18,6 @@ public class BookRecord {
     }
 
     public Book getBook() {
-
         return book;
     }
 
@@ -33,10 +29,8 @@ public class BookRecord {
         checkoutStatus=true;
     }
 
-
     public void returnBook(){
         checkoutStatus=false;
     }
-
 
 }
