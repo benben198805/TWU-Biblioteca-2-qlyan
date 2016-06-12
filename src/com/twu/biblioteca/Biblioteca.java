@@ -80,7 +80,7 @@ public class Biblioteca {
 
     public boolean validateIsbnInput(String userInput){
         for (BookRecord bookRecord:bookRecords) {
-            if(bookRecord.getBook().getIsbn()==userInput){
+            if(bookRecord.getBook().getIsbn().equals(userInput)){
                 return true;
             }
         }
@@ -101,7 +101,7 @@ public class Biblioteca {
         }
 
         for (BookRecord bookRecord:bookRecords) {
-            if(bookRecord.getBook().getIsbn()==userInput&&!bookRecord.isCheckoutStatus()){
+            if(bookRecord.getBook().getIsbn().equals(userInput)&&!bookRecord.isCheckoutStatus()){
                 bookRecord.setCheckoutStatus(true);
                 showSuccessfulCheckout();
             }
@@ -121,7 +121,7 @@ public class Biblioteca {
 
 
         for (BookRecord bookRecord:bookRecords) {
-            if(bookRecord.getBook().getIsbn()==userInput&&bookRecord.isCheckoutStatus()){
+            if(bookRecord.getBook().getIsbn().equals(userInput)&&bookRecord.isCheckoutStatus()){
                 bookRecord.setCheckoutStatus(false);
                 showSuccessfulReturn();
             }
