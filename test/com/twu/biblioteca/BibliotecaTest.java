@@ -6,11 +6,10 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class BibliotecaTest {
 
@@ -51,6 +50,7 @@ public class BibliotecaTest {
     }
     @Test
     public void should_output_successful_checkout() throws Exception {
+
         biblioteca.showSuccessfulCheckout();
 
         verify(consolePrinter).print("Thank you! Enjoy the book");

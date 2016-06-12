@@ -27,5 +27,4 @@ public class BookRecordTest {
         bookRecord.returnBook();
         assertEquals(bookRecord.isCheckoutStatus(),false);
     }
-
 }

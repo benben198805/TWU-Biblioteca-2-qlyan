@@ -29,13 +29,16 @@ public class Biblioteca {
         }
     }
 
-    public boolean validateMenuId(int menuId){
-        for(Option option :menu){
-            if(option.getId()==menuId){
-                return true;
-            }
+    public void listTitle(){
+        consolePrinter.print("isbn\tname\tauthor\tyear");
+    }
+
+
+    public void listBooks(){
+        listTitle();
+        for (BookRecord bookRecord:bookRecords) {
+            consolePrinter.print(bookRecord.getBook().showBook());
         }
-        return false;
     }
 
     public void getUserMenuInput(String userInput) {
@@ -51,17 +54,7 @@ public class Biblioteca {
         }
     }
 
-    public void listTitle(){
-        consolePrinter.print("isbn\tname\tauthor\tyear");
-    }
 
-
-    public void listBooks(){
-        listTitle();
-        for (BookRecord bookRecord:bookRecords) {
-            consolePrinter.print(bookRecord.getBook().showBook());
-        }
-    }
 
     public void listMenu(){
         consolePrinter.print("Please select a menu id.");
@@ -69,6 +62,15 @@ public class Biblioteca {
             consolePrinter.print(option.getOptionString());
         }
     }
+    public boolean validateMenuId(int menuId){
+        for(Option option :menu){
+            if(option.getId()==menuId){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void quit(){
         stopSign=true;
@@ -91,6 +93,24 @@ public class Biblioteca {
         return userInput;
     }
 
+    public void checkoutBook(){
+        String userInput= getUserIsbnInput();
+        if(!validateIsbnInput(userInput)){
+            showInvalidMessage();
+            return;
+        }
+
+        for (BookRecord bookRecord:bookRecords) {
+            if(bookRecord.getBook().getIsbn()==userInput&&!bookRecord.isCheckoutStatus()){
+                bookRecord.setCheckoutStatus(true);
+                showSuccessfulCheckout();
+            }
+            else
+            {
+                showUnsuccessfulCheckout();
+            }
+        }
+    }
 
     public void returnBook(){
         String userInput= getUserIsbnInput();
@@ -112,26 +132,6 @@ public class Biblioteca {
         }
     }
 
-    public void checkoutBook(){
-        String userInput= getUserIsbnInput();
-        if(!validateIsbnInput(userInput)){
-            showInvalidMessage();
-            return;
-        }
-
-        for (BookRecord bookRecord:bookRecords) {
-            if(bookRecord.getBook().getIsbn()==userInput&&!bookRecord.isCheckoutStatus()){
-                bookRecord.setCheckoutStatus(true);
-                showSuccessfulCheckout();
-            }
-            else
-            {
-                showUnsuccessfulCheckout();
-            }
-        }
-    }
-
-
 
     public void showWelcomeWords(){
         consolePrinter.print("welcome to biblioteca");
@@ -149,7 +149,6 @@ public class Biblioteca {
         consolePrinter.print("That book is not available");
     }
 
-
     public void showSuccessfulReturn(){
         consolePrinter.print("Thank you for returning the book");
     }
@@ -162,8 +161,11 @@ public class Biblioteca {
         consolePrinter.print("Select a valid option!");
     }
 
-
     public boolean isStopSign() {
         return stopSign;
+    }
+
+    public void setStopSign(boolean stopSign) {
+        this.stopSign = stopSign;
     }
 }
