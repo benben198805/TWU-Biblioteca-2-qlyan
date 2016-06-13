@@ -8,10 +8,16 @@ import com.twu.biblioteca.Biblioteca;
 public abstract class Option {
     private int id;
     private String name;
+    private OptionType optionType;
 
-    public Option(int id, String name) {
+    public Option(int id, String name,OptionType optionType) {
         this.id = id;
         this.name = name;
+        this.optionType=optionType;
+    }
+
+    public OptionType getOptionType() {
+        return optionType;
     }
 
     public int getId() {
@@ -28,6 +34,10 @@ public abstract class Option {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setOptionType(OptionType optionType) {
+        this.optionType = optionType;
     }
 
     public String getOptionString(){

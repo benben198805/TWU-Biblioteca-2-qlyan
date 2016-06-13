@@ -7,7 +7,7 @@ import com.twu.biblioteca.Biblioteca;
  */
 public class ListBookOption extends Option {
     public ListBookOption(int id, String name) {
-        super(id, name);
+        super(id, name,OptionType.NORMAL);
     }
 
     @Override

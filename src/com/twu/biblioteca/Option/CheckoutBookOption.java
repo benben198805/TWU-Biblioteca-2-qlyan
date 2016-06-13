@@ -7,7 +7,7 @@ import com.twu.biblioteca.Biblioteca;
  */
 public class CheckoutBookOption extends Option {
     public CheckoutBookOption(int id, String name) {
-        super(id, name);
+        super(id, name,OptionType.NORMAL);
     }
 
     @Override

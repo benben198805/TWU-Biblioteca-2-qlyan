@@ -7,7 +7,7 @@ import com.twu.biblioteca.Biblioteca;
  */
 public class QuitOption extends Option{
     public QuitOption(int id,String name) {
-        super(id,name);
+        super(id,name,OptionType.NORMAL);
     }
 
     @Override

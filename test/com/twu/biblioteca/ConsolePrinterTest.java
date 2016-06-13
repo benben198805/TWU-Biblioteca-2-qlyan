@@ -22,14 +22,14 @@ public class ConsolePrinterTest {
 
         printer.print("print me to console");
 
-        assertEquals(outContent.toString(), "print me to console");
+        assertEquals(outContent.toString(), "print me to console\n");
     }
 
     @Test
     public void should_can_print_special_character() {
         ConsolePrinter printer = new ConsolePrinter();
 
-        printer.print("@#$%^&*\n");
+        printer.print("@#$%^&*");
         assertEquals(outContent.toString(), "@#$%^&*\n");
     }
 
