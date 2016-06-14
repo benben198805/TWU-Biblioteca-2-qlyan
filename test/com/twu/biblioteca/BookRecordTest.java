@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.BookRecord;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,5 +25,10 @@ public class BookRecordTest {
         bookRecord.checkoutBook();
         bookRecord.returnBook();
         assertEquals(bookRecord.isCheckoutStatus(),false);
+    }
+
+    @Test
+    public void should_return_right_format_when_call_showBook() throws Exception {
+        assertEquals(bookRecord.showBook(),"ISBN0001\tBook1\tAuthor1\t1991");
     }
 }

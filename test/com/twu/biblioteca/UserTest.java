@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Model.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,5 +51,27 @@ public class UserTest {
     @Test
     public void should_return_user_info_when_call_userInfo() throws Exception {
         assertEquals(user.showInfo(),"100-1000\tJack\tChengdu\t12345678901");
+    }
+
+    @Test
+    public void should_return_empty_info_when_showCheckoutBookAndMovie_have_no_book_and_movie() throws Exception {
+
+        String result=user.showCheckoutBookAndMovie();
+        assertEquals(result,"User Name:Jack\nBook:\nMovie:\n");
+    }
+
+
+    @Test
+    public void should_return_book_info_when_showCheckoutBookAndMovie_only_have_book() throws Exception {
+        user.checkoutBook("123");
+        String result=user.showCheckoutBookAndMovie();
+        assertEquals(result,"User Name:Jack\nBook:\n123\nMovie:\n");
+    }
+
+    @Test
+    public void should_return_movie_info_when_showCheckoutBookAndMovie_only_have_movie() throws Exception {
+        user.checkoutMovie(123);
+        String result=user.showCheckoutBookAndMovie();
+        assertEquals(result,"User Name:Jack\nBook:\nMovie:\n123\n");
     }
 }
