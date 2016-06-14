@@ -9,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -24,14 +26,14 @@ public class CoreTest {
 
     @Before
     public void setUp() throws Exception {
-        List<Option> menu = new ArrayList<>();
+        Map<String,Option> menu = new HashMap<>();
 
         listBookOption=new ListBookOption(1,"List");
         checkoutBookOption=new ListBookOption(2, "Checkout");
-        menu.add(listBookOption);
-        menu.add(checkoutBookOption);
-        menu.add(new ShowMyInfoOption(3, "ShowMyInfo"));
-        menu.add(new ShowUserCheckoutInfo(4, "ShowUserCheckoutInfo"));
+        menu.put("1",listBookOption);
+        menu.put("2",checkoutBookOption);
+        menu.put("3",new ShowMyInfoOption(3, "ShowMyInfo"));
+        menu.put("4",new ShowUserCheckoutInfo(4, "ShowUserCheckoutInfo"));
 
         List<BookRecord> bookRecords=new ArrayList<>();
         bookRecords.add(new BookRecord(new Book("ISBN0001","Book1","Author1","1991")));
@@ -73,31 +75,22 @@ public class CoreTest {
 
     @Test
     public void should_return_true_when_call_validateMenuId_given_1() throws Exception {
-        boolean result= core.validateMenuSelect(1);
+        boolean result= core.validateMenuSelect("1");
         assertEquals(result,true);
     }
 
 
     @Test
     public void should_return_false_when_call_validateMenuId_given_no_exist_menu_id() throws Exception {
-        boolean result= core.validateMenuSelect(-1);
+        boolean result= core.validateMenuSelect("-1");
         assertEquals(result,false);
     }
 
     @Test
     public void should_run_ListBook_when_run_menu_option_given_1() throws Exception {
-        Option option = core.runMenuOption(2);
+        Option option = core.runMenuOption("2");
         assertEquals(option, checkoutBookOption);
     }
-
-
-    @Test
-    public void should_run_ListBook_when_run_menu_option_given_no_exist_menu_id() throws Exception {
-        Option option = core.runMenuOption(-1);
-        assertEquals(option, listBookOption);
-    }
-
-
 
 
     @Test

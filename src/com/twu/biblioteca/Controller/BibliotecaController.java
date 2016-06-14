@@ -7,6 +7,7 @@ import com.twu.biblioteca.Model.Option.Option;
 import com.twu.biblioteca.Model.User;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BibliotecaController {
@@ -16,7 +17,7 @@ public class BibliotecaController {
     private boolean stopSign;
     private Core core;
 
-    public BibliotecaController(ConsolePrinter consolePrinter, Scanner scanner, List<Option> menu, List<BookRecord> bookRecords, List<MovieRecord> movieRecoeds, List<User> userList) {
+    public BibliotecaController(ConsolePrinter consolePrinter, Scanner scanner, Map<String,Option> menu, List<BookRecord> bookRecords, List<MovieRecord> movieRecoeds, List<User> userList) {
         this.consolePrinter=consolePrinter;
         this.scanner=scanner;
 
@@ -42,11 +43,10 @@ public class BibliotecaController {
 
 
     public void getUserMenuInput(String userInput) {
-        int menuId=Integer.parseInt(userInput);
-        if (!core.validateMenuSelect(menuId)){
+        if (!core.validateMenuSelect(userInput)){
             showInvalidMessage();
         }else {
-            Option nowOption=core.runMenuOption(menuId);
+            Option nowOption=core.runMenuOption(userInput);
             nowOption.run(this);
             listMenu();
         }

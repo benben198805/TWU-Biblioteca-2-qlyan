@@ -7,6 +7,7 @@ import com.twu.biblioteca.Model.Option.OptionType;
 import com.twu.biblioteca.Model.User;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,9 +15,9 @@ public class Core {
     private List<BookRecord> bookRecords;
     private List<MovieRecord> movieRecoeds;
     private List<User> userList;
-    private List<Option> menu;
+    private Map<String,Option> menu;
 
-    public Core(List<BookRecord> bookRecords, List<MovieRecord> movieRecoeds, List<User> userList, List<Option> menu) {
+    public Core(List<BookRecord> bookRecords, List<MovieRecord> movieRecoeds, List<User> userList, Map<String,Option> menu) {
         this.bookRecords = bookRecords;
         this.movieRecoeds = movieRecoeds;
         this.userList = userList;
@@ -27,19 +28,22 @@ public class Core {
     public String listMenu(User loginUser){
         String menuListString="";
         if(loginUser==null){
-            for(Option option : menu){
+            for(String key:menu.keySet()) {
+                Option option = menu.get(key);
                 if(option.getOptionType()== OptionType.NORMAL){
                     menuListString+=option.getOptionString()+"\n";
                 }
             }
         }else if(loginUser.isLibrarian()){
-            for(Option option : menu){
+            for(String key:menu.keySet()) {
+                Option option = menu.get(key);
                 if(option.getOptionType()== OptionType.NORMAL||option.getOptionType()==OptionType.LIBRARIAN){
                     menuListString+=option.getOptionString()+"\n";
                 }
             }
         }else{
-            for(Option option : menu){
+            for(String key:menu.keySet()) {
+                Option option = menu.get(key);
                 if(option.getOptionType()== OptionType.NORMAL||option.getOptionType()==OptionType.CUSTOMER){
                     menuListString+=option.getOptionString()+"\n";
                 }
@@ -48,25 +52,19 @@ public class Core {
         return menuListString;
     }
 
-    public boolean validateMenuSelect(int menuId){
-        for(Option option : menu){
-            if(option.getId()==menuId){
-                return true;
-            }
+    public boolean validateMenuSelect(String menuId){
+        if(menu.containsKey(menuId)){
+            return true;
+        }else
+        {
+            return false;
         }
-        return false;
     }
 
 
-    public Option runMenuOption(int menuId) {
-        for(Option option : menu){
-            if(option.getId()==menuId){
-                return option;
-            }
-        }
-        return menu.get(0);
+    public Option runMenuOption(String menuId) {
+        return menu.get(menuId);
     }
-
 
 
     public String listbooks(){

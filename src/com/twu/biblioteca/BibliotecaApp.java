@@ -8,9 +8,7 @@ import com.twu.biblioteca.Model.MovieRecord;
 import com.twu.biblioteca.Model.Option.*;
 import com.twu.biblioteca.Model.User;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class BibliotecaApp {
 
@@ -31,16 +29,16 @@ public class BibliotecaApp {
         userList.add(new User("100-1001","password","ben","chengdu","09876543112",true));
 
 
-        List<Option> menu=new ArrayList<>();
-        menu.add(new ListBookOption(1,"ListBook"));
-        menu.add(new CheckoutBookOption(2, "CheckoutBook"));
-        menu.add(new ReturnBookOption(3, "ReturnBook"));
-        menu.add(new ListMovieOption(4, "ListMovie"));
-        menu.add(new CheckoutMovieOption(5, "CheckoutMovie"));
-        menu.add(new ReturnMovieOption(6, "ReturnMovie"));
-        menu.add(new QuitOption(7, "Quit"));
-        menu.add(new ShowMyInfoOption(8, "ShowMyInfo"));
-        menu.add(new ShowUserCheckoutInfo(9, "ShowUserCheckoutInfo"));
+        Map<String,Option> menu=new HashMap<String,Option>();
+        menu.put("1",new ListBookOption(1,"ListBook"));
+        menu.put("2",new CheckoutBookOption(2, "CheckoutBook"));
+        menu.put("3",new ReturnBookOption(3, "ReturnBook"));
+        menu.put("4",new ListMovieOption(4, "ListMovie"));
+        menu.put("5",new CheckoutMovieOption(5, "CheckoutMovie"));
+        menu.put("6",new ReturnMovieOption(6, "ReturnMovie"));
+        menu.put("7",new QuitOption(7, "Quit"));
+        menu.put("8",new ShowMyInfoOption(8, "ShowMyInfo"));
+        menu.put("9",new ShowUserCheckoutInfo(9, "ShowUserCheckoutInfo"));
 
 
 

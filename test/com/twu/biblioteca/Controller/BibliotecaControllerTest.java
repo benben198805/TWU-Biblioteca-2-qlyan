@@ -9,9 +9,7 @@ import com.twu.biblioteca.Model.User;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -32,11 +30,11 @@ public class BibliotecaControllerTest {
         consolePrinter=mock(ConsolePrinter.class);
         Scanner scanner=new Scanner(System.in);
 
-        List<Option> menu=new ArrayList<>();
-        menu.add(new ListBookOption(1,"List"));
-        menu.add(new CheckoutBookOption(2, "Checkout"));
-        menu.add(new ReturnBookOption(3, "Return"));
-        menu.add(new QuitOption(4, "Quit"));
+        Map<String,Option> menu=new HashMap<>();
+        menu.put("1",new ListBookOption(1,"List"));
+        menu.put("2",new CheckoutBookOption(2, "Checkout"));
+        menu.put("3",new ReturnBookOption(3, "Return"));
+        menu.put("4",new QuitOption(4, "Quit"));
 
         List<BookRecord> bookRecords=new ArrayList<>();
         bookRecords.add(new BookRecord(new Book("ISBN0001","Book1","Author1","1991")));
