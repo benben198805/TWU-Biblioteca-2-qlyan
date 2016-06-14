@@ -45,6 +45,7 @@ public class BibliotecaController {
     public void getUserMenuInput(String userInput) {
         if (!core.validateMenuSelect(userInput)){
             showInvalidMessage();
+            listMenu();
         }else {
             Option nowOption=core.runMenuOption(userInput);
             nowOption.run(this);

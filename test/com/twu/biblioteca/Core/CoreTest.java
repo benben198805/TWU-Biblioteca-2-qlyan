@@ -109,6 +109,7 @@ public class CoreTest {
     }
 
 
+
     @Test
     public void should_return_true_when_call_validateIsbnInput_given_ISBN0001() throws Exception {
         boolean result= core.validateIsbnInput("ISBN0001");
@@ -219,6 +220,13 @@ public class CoreTest {
         assertEquals(result,"1\tmovie1\t2000\tdirector1\t1\n2\tmovie2\t2002\tdirector2\t2\n");
     }
 
+    @Test
+    public void should_output_movie_list_when_call_listMovieDetail_with_checkout_1() throws Exception {
+        core.checkoutMovie(1);
+        String result=core.listMovieDetail();
+
+        assertEquals(result,"2\tmovie2\t2002\tdirector2\t2\n");
+    }
 
 
 

@@ -78,7 +78,7 @@ public class Core {
     public String listBookDetail(){
         String bookListString="";
         for (BookRecord bookRecord:bookRecords) {
-            bookListString+=bookRecord.showBook()+"\n";
+            bookListString+=bookRecord.isCheckoutStatus()?"":bookRecord.showBook()+"\n";
         }
         return bookListString;
     }
@@ -142,7 +142,7 @@ public class Core {
     public String listMovieDetail() {
         String movieListString="";
         for (MovieRecord movieRecord:movieRecoeds) {
-            movieListString+=movieRecord.showMovie()+"\n";
+            movieListString+=movieRecord.isCheckoutStatus()?"":movieRecord.showMovie()+"\n";
         }
         return movieListString;
     }
