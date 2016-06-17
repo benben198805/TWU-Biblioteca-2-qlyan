@@ -15,20 +15,22 @@ public class BookRecordTest {
     }
 
     @Test
-    public void should_return_true_when_call_checkoutBook() throws Exception {
+    public void shouldReturnTrueWhenWhenCheckoutBook() throws Exception {
         bookRecord.checkoutBook();
+
         assertEquals(bookRecord.isCheckoutStatus(),true);
     }
 
     @Test
-    public void should_return_false_when_call_checkoutBook_then_returnBook() throws Exception {
+    public void shouldReturnFalseWhenWhenCheckoutBookThenReturnBook() throws Exception {
         bookRecord.checkoutBook();
         bookRecord.returnBook();
+
         assertEquals(bookRecord.isCheckoutStatus(),false);
     }
 
     @Test
-    public void should_return_right_format_when_call_showBook() throws Exception {
+    public void shouldReturnRightFormatWhenWhenShowBook() throws Exception {
         assertEquals(bookRecord.showBook(),"ISBN0001\tBook1\tAuthor1\t1991");
     }
 }

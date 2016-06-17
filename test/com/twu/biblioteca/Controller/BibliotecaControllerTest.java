@@ -56,58 +56,55 @@ public class BibliotecaControllerTest {
         bibliotecaController =new BibliotecaController(consolePrinter,scanner,menu, bookRecords,movieRecords,userList);
     }
 
-
-
-//    @Test
-//    public void should_trigger_welcome_and_listMenu_once() throws Exception {
-//        bibliotecaController.start();
-//
-//        InOrder inOrder= inOrder(core);
-//        inOrder.verify(core).listMenu(null);
-//    }
-
-
+    
     @Test
-    public void should_output_welcome_word() throws Exception {
+    public void shouldOutputWelcomeWord() throws Exception {
         bibliotecaController.showWelcomeWords();
+
         verify(consolePrinter).print("welcome to biblioteca");
     }
 
     @Test
-    public void should_output_quit_word() throws Exception {
+    public void shouldOutputQuitWord() throws Exception {
         bibliotecaController.showQuitWords();
+
         verify(consolePrinter).print("good bye");
     }
     @Test
-    public void should_output_successful_checkout() throws Exception {
+    public void shouldOutputSuccessfulCheckout() throws Exception {
         bibliotecaController.showSuccessfulCheckout();
+
         verify(consolePrinter).print("Thank you! Enjoy the book");
     }
 
     @Test
-    public void should_output_unsuccessful_checkout() throws Exception {
+    public void shouldOutputUnsuccessfulCheckout() throws Exception {
         bibliotecaController.showUnsuccessfulCheckout();
+
         verify(consolePrinter).print("That book is not available");
 
     }
 
     @Test
-    public void should_output_successful_return() throws Exception {
+    public void shouldOutputSuccessfulReturn() throws Exception {
         bibliotecaController.showSuccessfulReturn();
+
         verify(consolePrinter).print("Thank you for returning the book");
 
     }
 
     @Test
-    public void should_output_unsuccessful_return() throws Exception {
+    public void shouldOutputUnsuccessfulReturn() throws Exception {
         bibliotecaController.showUnsuccessfulReturn();
+
         verify(consolePrinter).print("That is not a valid book to return");
     }
 
 
     @Test
-    public void should_output_invalid_message() throws Exception {
+    public void shouldOutputInvalidMessage() throws Exception {
         bibliotecaController.showInvalidMessage();
+
         verify(consolePrinter).print("Select a valid option!");
 
     }
@@ -115,14 +112,16 @@ public class BibliotecaControllerTest {
 
 
     @Test
-    public void should_set_stopSign_true_when_call_quit() throws Exception {
+    public void shouldSetStopSignTrueWhenCallQuit() throws Exception {
         bibliotecaController.quit();
+
         assertEquals(bibliotecaController.isStopSign(),true);
     }
 
     @Test
-    public void should_set_stopSign_true_when_listBooks() throws Exception {
+    public void shouldSetStopSignTrueWhenListBooks() throws Exception {
         bibliotecaController.listBooks();
+
         verify(consolePrinter).print("isbn\tname\tauthor\tyear\nISBN0001\tBook1\tAuthor1\t1991\n" +
                 "ISBN0002\tBook2\tAuthor2\t2000\n");
     }
@@ -130,30 +129,31 @@ public class BibliotecaControllerTest {
 
 
     @Test
-    public void should_return_true_when_have_a_login_user() throws Exception {
+    public void shouldReturnTrueWhenHaveALoginUser() throws Exception {
         bibliotecaController.loginIn("100-1001","password");
         boolean result= bibliotecaController.isLogined();
+
         assertEquals(result,true);
     }
 
 
     @Test
-    public void should_return_false_when_have_no_login_user() throws Exception {
+    public void shouldReturnFalseWhenHaveNoLoginUser() throws Exception {
         boolean result= bibliotecaController.isLogined();
+
         assertEquals(result,false);
     }
 
 
     @Test
-    public void should_output_successful_checkout_movie() throws Exception {
-
+    public void shouldOutputSuccessfulCheckoutMovie() throws Exception {
         bibliotecaController.showSuccessfulCheckoutMovie();
 
         verify(consolePrinter).print("Thank you! Enjoy the movie");
     }
 
     @Test
-    public void should_output_unsuccessful_checkout_movie() throws Exception {
+    public void shouldOutputUnsuccessfulCheckoutMovie() throws Exception {
         bibliotecaController.showUnsuccessfulCheckoutMovie();
 
         verify(consolePrinter).print("That movie is not available");
@@ -161,7 +161,7 @@ public class BibliotecaControllerTest {
     }
 
     @Test
-    public void should_output_successful_return_movie() throws Exception {
+    public void shouldOutputSuccessfulReturnMovie() throws Exception {
         bibliotecaController.showSuccessfulReturnMovie();
 
         verify(consolePrinter).print("Thank you for returning the movie");
@@ -169,7 +169,7 @@ public class BibliotecaControllerTest {
     }
 
     @Test
-    public void should_output_unsuccessful_return_movie() throws Exception {
+    public void shouldOutputUnsuccessfulReturnMovie() throws Exception {
         bibliotecaController.showUnsuccessfulReturnMovie();
 
         verify(consolePrinter).print("That is not a valid movie to return");

@@ -14,26 +14,28 @@ public class MovieRecordTest {
     }
 
     @Test
-    public void should_return_true_when_call_checkoutMovie() throws Exception {
+    public void shouldReturnTrueWhenCheckoutMovie() throws Exception {
         movieRecord.checkoutMovie();
+        
         assertEquals(movieRecord.isCheckoutStatus(),true);
     }
 
     @Test
-    public void should_return_false_when_call_checkoutMovie_then_returnMovie() throws Exception {
+    public void shouldReturnFalseWhenCheckoutMovieThenReturnMovie() throws Exception {
         movieRecord.checkoutMovie();
         movieRecord.returnMovie();
+
         assertEquals(movieRecord.isCheckoutStatus(),false);
     }
 
     @Test
-    public void should_return_right_format_when_call_showMovie() throws Exception {
+    public void shouldReturnRightFormatWhenShowMovie() throws Exception {
         assertEquals(movieRecord.showMovie(),"1\tmovie1\t2000\tdirector1\t1");
     }
 
 
     @Test
-    public void should_return_1_when_given_rating_1() throws Exception {
+    public void shouldReturnOneWhenGivenRatingOne() throws Exception {
         String result=movieRecord.validateMovieRatingInput(1);
 
         assertEquals(result,"1");
@@ -41,21 +43,21 @@ public class MovieRecordTest {
 
 
     @Test
-    public void should_return_5_when_given_rating_5() throws Exception {
+    public void shouldReturnFiveWhenGivenRatingFive() throws Exception {
         String result=movieRecord.validateMovieRatingInput(5);
 
         assertEquals(result,"5");
     }
 
     @Test
-    public void should_return_10_when_given_rating_10() throws Exception {
+    public void shouldReturnTenWheGivenRatingTen() throws Exception {
         String result=movieRecord.validateMovieRatingInput(10);
 
         assertEquals(result,"10");
     }
 
     @Test
-    public void should_return_unrated_when_given_rating_out_of_1_10() throws Exception {
+    public void shouldReturnUnratedWhenGivenRatingOutOfOneToTen() throws Exception {
         String result=movieRecord.validateMovieRatingInput(0);
 
         assertEquals(result,"unrated");
