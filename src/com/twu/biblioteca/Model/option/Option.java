@@ -1,10 +1,7 @@
-package com.twu.biblioteca.Model.Option;
+package com.twu.biblioteca.Model.option;
 
 import com.twu.biblioteca.Controller.BibliotecaController;
 
-/**
- * Created by ben on 16-6-12.
- */
 public abstract class Option {
     private int id;
     private String name;
@@ -37,7 +34,7 @@ public abstract class Option {
     }
 
     public String getOptionString(){
-        return String.format("%s\t%s", getId(), getName());
+        return String.format("%s\t%s",id,name);
     }
 
 

@@ -1,14 +1,14 @@
-package com.twu.biblioteca.Model.Option;
+package com.twu.biblioteca.Model.option;
 
 import com.twu.biblioteca.Controller.BibliotecaController;
 
-public class ListMovieOption extends  Option {
-    public ListMovieOption(int id, String name) {
+public class ReturnMovieOption extends Option {
+    public ReturnMovieOption(int id, String name) {
         super(id, name,OptionType.NORMAL);
     }
 
     @Override
     public void run(BibliotecaController bibliotecaController) {
-        bibliotecaController.listMovies();
+        bibliotecaController.returnMovie();
     }
 }

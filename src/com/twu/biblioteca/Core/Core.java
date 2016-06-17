@@ -2,8 +2,8 @@ package com.twu.biblioteca.Core;
 
 import com.twu.biblioteca.Model.BookRecord;
 import com.twu.biblioteca.Model.MovieRecord;
-import com.twu.biblioteca.Model.Option.Option;
-import com.twu.biblioteca.Model.Option.OptionType;
+import com.twu.biblioteca.Model.option.Option;
+import com.twu.biblioteca.Model.option.OptionType;
 import com.twu.biblioteca.Model.User;
 
 import java.util.List;

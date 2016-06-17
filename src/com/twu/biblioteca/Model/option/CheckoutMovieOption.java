@@ -1,4 +1,4 @@
-package com.twu.biblioteca.Model.Option;
+package com.twu.biblioteca.Model.option;
 
 import com.twu.biblioteca.Controller.BibliotecaController;
 

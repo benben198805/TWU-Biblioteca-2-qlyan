@@ -45,14 +45,6 @@ public class User {
         return password;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
     public void checkoutBook(String bookIsbn) {
         bookCheckoutList.add(bookIsbn);
     }
@@ -74,7 +66,7 @@ public class User {
     }
 
     public String showInfo(){
-        return String.format("%s\t%s\t%s\t%s", getId(), getName(), getAddress(), getPhone());
+        return String.format("%s\t%s\t%s\t%s", id,name,address,phone);
     }
 
     public String showCheckoutBookAndMovie(){
